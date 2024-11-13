@@ -22,20 +22,12 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        txtBx_contacto = New TextBox()
+        txtBx_id = New TextBox()
         lbl_contacto = New Label()
-        lbl_tipo_contacto = New Label()
-        cmbBx_tipo_contacto = New ComboBox()
         lbl_nombre = New Label()
         txtBx_nombre = New TextBox()
-        lbl_email = New Label()
-        txtBx_email = New TextBox()
-        lbl_movil = New Label()
-        txtBx_movil = New TextBox()
-        lbl_direccion = New Label()
-        txtBx_direccion = New TextBox()
-        cmbBx_poblacion = New ComboBox()
-        lbl_poblacion = New Label()
+        cmbBx_genero = New ComboBox()
+        lbl_genero = New Label()
         GroupBox1 = New GroupBox()
         btn_salir = New Button()
         btn_cancelar = New Button()
@@ -48,17 +40,22 @@ Partial Class Form1
         ColumnHeader5 = New ColumnHeader()
         ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
+        GroupBox2 = New GroupBox()
+        txtBx_calificación = New TextBox()
+        lbl_calificacion = New Label()
+        lbl_año = New Label()
+        txtBx_año = New TextBox()
         GroupBox1.SuspendLayout()
         SuspendLayout()
         ' 
-        ' txtBx_contacto
+        ' txtBx_id
         ' 
-        txtBx_contacto.Location = New Point(132, 46)
-        txtBx_contacto.Margin = New Padding(3, 2, 3, 2)
-        txtBx_contacto.Name = "txtBx_contacto"
-        txtBx_contacto.ReadOnly = True
-        txtBx_contacto.Size = New Size(52, 23)
-        txtBx_contacto.TabIndex = 0
+        txtBx_id.Location = New Point(132, 46)
+        txtBx_id.Margin = New Padding(3, 2, 3, 2)
+        txtBx_id.Name = "txtBx_id"
+        txtBx_id.ReadOnly = True
+        txtBx_id.Size = New Size(52, 23)
+        txtBx_id.TabIndex = 0
         ' 
         ' lbl_contacto
         ' 
@@ -66,30 +63,10 @@ Partial Class Form1
         lbl_contacto.ImageAlign = ContentAlignment.MiddleRight
         lbl_contacto.Location = New Point(48, 49)
         lbl_contacto.Name = "lbl_contacto"
-        lbl_contacto.Size = New Size(73, 15)
+        lbl_contacto.Size = New Size(18, 15)
         lbl_contacto.TabIndex = 1
-        lbl_contacto.Text = "Nº Contacto"
+        lbl_contacto.Text = "ID"
         lbl_contacto.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' lbl_tipo_contacto
-        ' 
-        lbl_tipo_contacto.AutoSize = True
-        lbl_tipo_contacto.Location = New Point(386, 49)
-        lbl_tipo_contacto.Name = "lbl_tipo_contacto"
-        lbl_tipo_contacto.Size = New Size(96, 15)
-        lbl_tipo_contacto.TabIndex = 3
-        lbl_tipo_contacto.Text = "Tipo de contacto"
-        lbl_tipo_contacto.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' cmbBx_tipo_contacto
-        ' 
-        cmbBx_tipo_contacto.FormattingEnabled = True
-        cmbBx_tipo_contacto.Items.AddRange(New Object() {"Amigo", "Conocido", "Familia", "Clase"})
-        cmbBx_tipo_contacto.Location = New Point(499, 46)
-        cmbBx_tipo_contacto.Margin = New Padding(3, 2, 3, 2)
-        cmbBx_tipo_contacto.Name = "cmbBx_tipo_contacto"
-        cmbBx_tipo_contacto.Size = New Size(126, 23)
-        cmbBx_tipo_contacto.TabIndex = 4
         ' 
         ' lbl_nombre
         ' 
@@ -110,102 +87,42 @@ Partial Class Form1
         txtBx_nombre.Size = New Size(126, 23)
         txtBx_nombre.TabIndex = 5
         ' 
-        ' lbl_email
+        ' cmbBx_genero
         ' 
-        lbl_email.AutoSize = True
-        lbl_email.ImageAlign = ContentAlignment.MiddleRight
-        lbl_email.Location = New Point(48, 118)
-        lbl_email.Name = "lbl_email"
-        lbl_email.Size = New Size(41, 15)
-        lbl_email.TabIndex = 8
-        lbl_email.Text = "E-mail"
-        lbl_email.TextAlign = ContentAlignment.MiddleLeft
+        cmbBx_genero.FormattingEnabled = True
+        cmbBx_genero.Location = New Point(395, 82)
+        cmbBx_genero.Margin = New Padding(3, 2, 3, 2)
+        cmbBx_genero.Name = "cmbBx_genero"
+        cmbBx_genero.Size = New Size(126, 23)
+        cmbBx_genero.TabIndex = 14
         ' 
-        ' txtBx_email
+        ' lbl_genero
         ' 
-        txtBx_email.Location = New Point(132, 116)
-        txtBx_email.Margin = New Padding(3, 2, 3, 2)
-        txtBx_email.Name = "txtBx_email"
-        txtBx_email.Size = New Size(236, 23)
-        txtBx_email.TabIndex = 7
-        ' 
-        ' lbl_movil
-        ' 
-        lbl_movil.AutoSize = True
-        lbl_movil.Location = New Point(445, 99)
-        lbl_movil.Name = "lbl_movil"
-        lbl_movil.Size = New Size(37, 15)
-        lbl_movil.TabIndex = 10
-        lbl_movil.Text = "Movil"
-        lbl_movil.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' txtBx_movil
-        ' 
-        txtBx_movil.Location = New Point(499, 96)
-        txtBx_movil.Margin = New Padding(3, 2, 3, 2)
-        txtBx_movil.Name = "txtBx_movil"
-        txtBx_movil.Size = New Size(126, 23)
-        txtBx_movil.TabIndex = 9
-        ' 
-        ' lbl_direccion
-        ' 
-        lbl_direccion.AutoSize = True
-        lbl_direccion.ImageAlign = ContentAlignment.MiddleRight
-        lbl_direccion.Location = New Point(48, 150)
-        lbl_direccion.Name = "lbl_direccion"
-        lbl_direccion.Size = New Size(57, 15)
-        lbl_direccion.TabIndex = 12
-        lbl_direccion.Text = "Dirección"
-        lbl_direccion.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' txtBx_direccion
-        ' 
-        txtBx_direccion.Location = New Point(132, 148)
-        txtBx_direccion.Margin = New Padding(3, 2, 3, 2)
-        txtBx_direccion.Name = "txtBx_direccion"
-        txtBx_direccion.Size = New Size(236, 23)
-        txtBx_direccion.TabIndex = 11
-        ' 
-        ' cmbBx_poblacion
-        ' 
-        cmbBx_poblacion.FormattingEnabled = True
-        cmbBx_poblacion.Location = New Point(499, 142)
-        cmbBx_poblacion.Margin = New Padding(3, 2, 3, 2)
-        cmbBx_poblacion.Name = "cmbBx_poblacion"
-        cmbBx_poblacion.Size = New Size(126, 23)
-        cmbBx_poblacion.TabIndex = 14
-        ' 
-        ' lbl_poblacion
-        ' 
-        lbl_poblacion.AutoSize = True
-        lbl_poblacion.Location = New Point(422, 145)
-        lbl_poblacion.Name = "lbl_poblacion"
-        lbl_poblacion.Size = New Size(60, 15)
-        lbl_poblacion.TabIndex = 13
-        lbl_poblacion.Text = "Población"
-        lbl_poblacion.TextAlign = ContentAlignment.MiddleLeft
+        lbl_genero.AutoSize = True
+        lbl_genero.Location = New Point(318, 85)
+        lbl_genero.Name = "lbl_genero"
+        lbl_genero.Size = New Size(45, 15)
+        lbl_genero.TabIndex = 13
+        lbl_genero.Text = "Género"
+        lbl_genero.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(txtBx_año)
+        GroupBox1.Controls.Add(lbl_año)
+        GroupBox1.Controls.Add(txtBx_calificación)
+        GroupBox1.Controls.Add(lbl_calificacion)
         GroupBox1.Controls.Add(btn_salir)
         GroupBox1.Controls.Add(btn_cancelar)
         GroupBox1.Controls.Add(btn_agregar)
-        GroupBox1.Controls.Add(lbl_tipo_contacto)
-        GroupBox1.Controls.Add(cmbBx_poblacion)
-        GroupBox1.Controls.Add(txtBx_contacto)
-        GroupBox1.Controls.Add(lbl_poblacion)
+        GroupBox1.Controls.Add(cmbBx_genero)
+        GroupBox1.Controls.Add(txtBx_id)
+        GroupBox1.Controls.Add(lbl_genero)
         GroupBox1.Controls.Add(lbl_contacto)
-        GroupBox1.Controls.Add(lbl_direccion)
-        GroupBox1.Controls.Add(cmbBx_tipo_contacto)
-        GroupBox1.Controls.Add(txtBx_direccion)
         GroupBox1.Controls.Add(txtBx_nombre)
-        GroupBox1.Controls.Add(lbl_movil)
         GroupBox1.Controls.Add(lbl_nombre)
-        GroupBox1.Controls.Add(txtBx_movil)
-        GroupBox1.Controls.Add(txtBx_email)
-        GroupBox1.Controls.Add(lbl_email)
         GroupBox1.ForeColor = SystemColors.ButtonHighlight
-        GroupBox1.Location = New Point(215, 11)
+        GroupBox1.Location = New Point(40, 11)
         GroupBox1.Margin = New Padding(3, 2, 3, 2)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Padding = New Padding(3, 2, 3, 2)
@@ -217,7 +134,7 @@ Partial Class Form1
         ' btn_salir
         ' 
         btn_salir.ForeColor = Color.Black
-        btn_salir.Location = New Point(518, 191)
+        btn_salir.Location = New Point(448, 191)
         btn_salir.Margin = New Padding(3, 2, 3, 2)
         btn_salir.Name = "btn_salir"
         btn_salir.Size = New Size(82, 22)
@@ -297,12 +214,60 @@ Partial Class Form1
         ColumnHeader7.Text = "Población"
         ColumnHeader7.Width = 80
         ' 
+        ' GroupBox2
+        ' 
+        GroupBox2.ForeColor = Color.White
+        GroupBox2.Location = New Point(726, 12)
+        GroupBox2.Name = "GroupBox2"
+        GroupBox2.Size = New Size(272, 225)
+        GroupBox2.TabIndex = 17
+        GroupBox2.TabStop = False
+        GroupBox2.Text = "GroupBox2"
+        ' 
+        ' txtBx_calificación
+        ' 
+        txtBx_calificación.Location = New Point(132, 122)
+        txtBx_calificación.Margin = New Padding(3, 2, 3, 2)
+        txtBx_calificación.Name = "txtBx_calificación"
+        txtBx_calificación.Size = New Size(126, 23)
+        txtBx_calificación.TabIndex = 18
+        ' 
+        ' lbl_calificacion
+        ' 
+        lbl_calificacion.AutoSize = True
+        lbl_calificacion.ImageAlign = ContentAlignment.MiddleRight
+        lbl_calificacion.Location = New Point(48, 125)
+        lbl_calificacion.Name = "lbl_calificacion"
+        lbl_calificacion.Size = New Size(69, 15)
+        lbl_calificacion.TabIndex = 19
+        lbl_calificacion.Text = "Calificación"
+        lbl_calificacion.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' lbl_año
+        ' 
+        lbl_año.AutoSize = True
+        lbl_año.Location = New Point(318, 49)
+        lbl_año.Name = "lbl_año"
+        lbl_año.Size = New Size(29, 15)
+        lbl_año.TabIndex = 20
+        lbl_año.Text = "Año"
+        lbl_año.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' txtBx_año
+        ' 
+        txtBx_año.Location = New Point(395, 46)
+        txtBx_año.Margin = New Padding(3, 2, 3, 2)
+        txtBx_año.Name = "txtBx_año"
+        txtBx_año.Size = New Size(49, 23)
+        txtBx_año.TabIndex = 21
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GrayText
         ClientSize = New Size(1027, 477)
+        Controls.Add(GroupBox2)
         Controls.Add(ListView1)
         Controls.Add(GroupBox1)
         Margin = New Padding(3, 2, 3, 2)
@@ -315,20 +280,12 @@ Partial Class Form1
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents txtBx_contacto As TextBox
+    Friend WithEvents txtBx_id As TextBox
     Friend WithEvents lbl_contacto As Label
-    Friend WithEvents lbl_tipo_contacto As Label
-    Friend WithEvents cmbBx_tipo_contacto As ComboBox
     Friend WithEvents lbl_nombre As Label
     Friend WithEvents txtBx_nombre As TextBox
-    Friend WithEvents lbl_email As Label
-    Friend WithEvents txtBx_email As TextBox
-    Friend WithEvents lbl_movil As Label
-    Friend WithEvents txtBx_movil As TextBox
-    Friend WithEvents lbl_direccion As Label
-    Friend WithEvents txtBx_direccion As TextBox
-    Friend WithEvents cmbBx_poblacion As ComboBox
-    Friend WithEvents lbl_poblacion As Label
+    Friend WithEvents cmbBx_genero As ComboBox
+    Friend WithEvents lbl_genero As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btn_salir As Button
     Friend WithEvents btn_cancelar As Button
@@ -341,6 +298,10 @@ Partial Class Form1
     Friend WithEvents ColumnHeader5 As ColumnHeader
     Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
-    Friend WithEvents Label1 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents txtBx_año As TextBox
+    Friend WithEvents lbl_año As Label
+    Friend WithEvents txtBx_calificación As TextBox
+    Friend WithEvents lbl_calificacion As Label
 
 End Class
