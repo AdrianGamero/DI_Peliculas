@@ -1,5 +1,5 @@
-﻿﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Formulario
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -29,6 +29,10 @@ Partial Class Form1
         cmbBx_genero = New ComboBox()
         lbl_genero = New Label()
         GroupBox1 = New GroupBox()
+        txtBx_año = New TextBox()
+        lbl_año = New Label()
+        txtBx_calificación = New TextBox()
+        lbl_calificacion = New Label()
         btn_salir = New Button()
         btn_cancelar = New Button()
         btn_agregar = New Button()
@@ -41,11 +45,10 @@ Partial Class Form1
         ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
         GroupBox2 = New GroupBox()
-        txtBx_calificación = New TextBox()
-        lbl_calificacion = New Label()
-        lbl_año = New Label()
-        txtBx_año = New TextBox()
+        ListView2 = New ListView()
+        btn_eliminar = New Button()
         GroupBox1.SuspendLayout()
+        GroupBox2.SuspendLayout()
         SuspendLayout()
         ' 
         ' txtBx_id
@@ -130,6 +133,43 @@ Partial Class Form1
         GroupBox1.TabIndex = 15
         GroupBox1.TabStop = False
         GroupBox1.Text = "Nuevo contacto"
+        ' 
+        ' txtBx_año
+        ' 
+        txtBx_año.Location = New Point(395, 46)
+        txtBx_año.Margin = New Padding(3, 2, 3, 2)
+        txtBx_año.Name = "txtBx_año"
+        txtBx_año.Size = New Size(49, 23)
+        txtBx_año.TabIndex = 21
+        ' 
+        ' lbl_año
+        ' 
+        lbl_año.AutoSize = True
+        lbl_año.Location = New Point(318, 49)
+        lbl_año.Name = "lbl_año"
+        lbl_año.Size = New Size(29, 15)
+        lbl_año.TabIndex = 20
+        lbl_año.Text = "Año"
+        lbl_año.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' txtBx_calificación
+        ' 
+        txtBx_calificación.Location = New Point(132, 122)
+        txtBx_calificación.Margin = New Padding(3, 2, 3, 2)
+        txtBx_calificación.Name = "txtBx_calificación"
+        txtBx_calificación.Size = New Size(126, 23)
+        txtBx_calificación.TabIndex = 18
+        ' 
+        ' lbl_calificacion
+        ' 
+        lbl_calificacion.AutoSize = True
+        lbl_calificacion.ImageAlign = ContentAlignment.MiddleRight
+        lbl_calificacion.Location = New Point(48, 125)
+        lbl_calificacion.Name = "lbl_calificacion"
+        lbl_calificacion.Size = New Size(69, 15)
+        lbl_calificacion.TabIndex = 19
+        lbl_calificacion.Text = "Calificación"
+        lbl_calificacion.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' btn_salir
         ' 
@@ -216,54 +256,36 @@ Partial Class Form1
         ' 
         ' GroupBox2
         ' 
+        GroupBox2.Controls.Add(btn_eliminar)
+        GroupBox2.Controls.Add(ListView2)
         GroupBox2.ForeColor = Color.White
-        GroupBox2.Location = New Point(726, 12)
+        GroupBox2.Location = New Point(731, 12)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(272, 225)
         GroupBox2.TabIndex = 17
         GroupBox2.TabStop = False
         GroupBox2.Text = "GroupBox2"
         ' 
-        ' txtBx_calificación
+        ' ListView2
         ' 
-        txtBx_calificación.Location = New Point(132, 122)
-        txtBx_calificación.Margin = New Padding(3, 2, 3, 2)
-        txtBx_calificación.Name = "txtBx_calificación"
-        txtBx_calificación.Size = New Size(126, 23)
-        txtBx_calificación.TabIndex = 18
+        ListView2.Location = New Point(6, 22)
+        ListView2.Name = "ListView2"
+        ListView2.Size = New Size(189, 190)
+        ListView2.TabIndex = 0
+        ListView2.UseCompatibleStateImageBehavior = False
         ' 
-        ' lbl_calificacion
+        ' btn_eliminar
         ' 
-        lbl_calificacion.AutoSize = True
-        lbl_calificacion.ImageAlign = ContentAlignment.MiddleRight
-        lbl_calificacion.Location = New Point(48, 125)
-        lbl_calificacion.Name = "lbl_calificacion"
-        lbl_calificacion.Size = New Size(69, 15)
-        lbl_calificacion.TabIndex = 19
-        lbl_calificacion.Text = "Calificación"
-        lbl_calificacion.TextAlign = ContentAlignment.MiddleLeft
+        btn_eliminar.Location = New Point(212, 187)
+        btn_eliminar.Name = "btn_eliminar"
+        btn_eliminar.Size = New Size(75, 23)
+        btn_eliminar.TabIndex = 1
+        btn_eliminar.Text = "Eliminar"
+        btn_eliminar.UseVisualStyleBackColor = True
         ' 
-        ' lbl_año
+        ' Formulario
         ' 
-        lbl_año.AutoSize = True
-        lbl_año.Location = New Point(318, 49)
-        lbl_año.Name = "lbl_año"
-        lbl_año.Size = New Size(29, 15)
-        lbl_año.TabIndex = 20
-        lbl_año.Text = "Año"
-        lbl_año.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' txtBx_año
-        ' 
-        txtBx_año.Location = New Point(395, 46)
-        txtBx_año.Margin = New Padding(3, 2, 3, 2)
-        txtBx_año.Name = "txtBx_año"
-        txtBx_año.Size = New Size(49, 23)
-        txtBx_año.TabIndex = 21
-        ' 
-        ' Form1
-        ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GrayText
         ClientSize = New Size(1027, 477)
@@ -273,10 +295,11 @@ Partial Class Form1
         Margin = New Padding(3, 2, 3, 2)
         MaximizeBox = False
         MinimizeBox = False
-        Name = "Form1"
+        Name = "Formulario"
         Text = " "
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
+        GroupBox2.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -303,5 +326,7 @@ Partial Class Form1
     Friend WithEvents lbl_año As Label
     Friend WithEvents txtBx_calificación As TextBox
     Friend WithEvents lbl_calificacion As Label
+    Friend WithEvents btn_eliminar As Button
+    Friend WithEvents ListView2 As ListView
 
 End Class
