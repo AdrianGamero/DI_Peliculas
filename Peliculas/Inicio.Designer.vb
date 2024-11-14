@@ -53,7 +53,7 @@ Partial Class Inicio
         Timer1.Enabled = True
         Timer1.Interval = 5000
         ' 
-        ' Form2
+        ' Inicio
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -61,7 +61,7 @@ Partial Class Inicio
         ClientSize = New Size(784, 383)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Name = "Form2"
+        Name = "Inicio"
         Text = "Form2"
         ResumeLayout(False)
         PerformLayout()

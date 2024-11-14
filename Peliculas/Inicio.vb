@@ -5,6 +5,7 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Formulario.Show()
-        Me.Close()
+        Me.Hide()
+        Timer1.Enabled = False
     End Sub
 End Class

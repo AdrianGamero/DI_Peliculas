@@ -28,7 +28,7 @@ Partial Class Formulario
         txtBx_nombre = New TextBox()
         cmbBx_genero = New ComboBox()
         lbl_genero = New Label()
-        GroupBox1 = New GroupBox()
+        grBx_nuevo = New GroupBox()
         txtBx_año = New TextBox()
         lbl_año = New Label()
         txtBx_calificación = New TextBox()
@@ -42,13 +42,12 @@ Partial Class Formulario
         ColumnHeader3 = New ColumnHeader()
         ColumnHeader4 = New ColumnHeader()
         ColumnHeader5 = New ColumnHeader()
-        ColumnHeader6 = New ColumnHeader()
         ColumnHeader7 = New ColumnHeader()
-        GroupBox2 = New GroupBox()
-        ListView2 = New ListView()
+        grBx_eliminar = New GroupBox()
+        CheckedListBox = New CheckedListBox()
         btn_eliminar = New Button()
-        GroupBox1.SuspendLayout()
-        GroupBox2.SuspendLayout()
+        grBx_nuevo.SuspendLayout()
+        grBx_eliminar.SuspendLayout()
         SuspendLayout()
         ' 
         ' txtBx_id
@@ -109,30 +108,30 @@ Partial Class Formulario
         lbl_genero.Text = "Género"
         lbl_genero.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' GroupBox1
+        ' grBx_nuevo
         ' 
-        GroupBox1.Controls.Add(txtBx_año)
-        GroupBox1.Controls.Add(lbl_año)
-        GroupBox1.Controls.Add(txtBx_calificación)
-        GroupBox1.Controls.Add(lbl_calificacion)
-        GroupBox1.Controls.Add(btn_salir)
-        GroupBox1.Controls.Add(btn_cancelar)
-        GroupBox1.Controls.Add(btn_agregar)
-        GroupBox1.Controls.Add(cmbBx_genero)
-        GroupBox1.Controls.Add(txtBx_id)
-        GroupBox1.Controls.Add(lbl_genero)
-        GroupBox1.Controls.Add(lbl_contacto)
-        GroupBox1.Controls.Add(txtBx_nombre)
-        GroupBox1.Controls.Add(lbl_nombre)
-        GroupBox1.ForeColor = SystemColors.ButtonHighlight
-        GroupBox1.Location = New Point(40, 11)
-        GroupBox1.Margin = New Padding(3, 2, 3, 2)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Padding = New Padding(3, 2, 3, 2)
-        GroupBox1.Size = New Size(650, 225)
-        GroupBox1.TabIndex = 15
-        GroupBox1.TabStop = False
-        GroupBox1.Text = "Nuevo contacto"
+        grBx_nuevo.Controls.Add(txtBx_año)
+        grBx_nuevo.Controls.Add(lbl_año)
+        grBx_nuevo.Controls.Add(txtBx_calificación)
+        grBx_nuevo.Controls.Add(lbl_calificacion)
+        grBx_nuevo.Controls.Add(btn_salir)
+        grBx_nuevo.Controls.Add(btn_cancelar)
+        grBx_nuevo.Controls.Add(btn_agregar)
+        grBx_nuevo.Controls.Add(cmbBx_genero)
+        grBx_nuevo.Controls.Add(txtBx_id)
+        grBx_nuevo.Controls.Add(lbl_genero)
+        grBx_nuevo.Controls.Add(lbl_contacto)
+        grBx_nuevo.Controls.Add(txtBx_nombre)
+        grBx_nuevo.Controls.Add(lbl_nombre)
+        grBx_nuevo.ForeColor = SystemColors.ButtonHighlight
+        grBx_nuevo.Location = New Point(40, 11)
+        grBx_nuevo.Margin = New Padding(3, 2, 3, 2)
+        grBx_nuevo.Name = "grBx_nuevo"
+        grBx_nuevo.Padding = New Padding(3, 2, 3, 2)
+        grBx_nuevo.Size = New Size(650, 225)
+        grBx_nuevo.TabIndex = 15
+        grBx_nuevo.TabStop = False
+        grBx_nuevo.Text = "Nueva pelicula"
         ' 
         ' txtBx_año
         ' 
@@ -174,7 +173,7 @@ Partial Class Formulario
         ' btn_salir
         ' 
         btn_salir.ForeColor = Color.Black
-        btn_salir.Location = New Point(448, 191)
+        btn_salir.Location = New Point(518, 191)
         btn_salir.Margin = New Padding(3, 2, 3, 2)
         btn_salir.Name = "btn_salir"
         btn_salir.Size = New Size(82, 22)
@@ -207,11 +206,11 @@ Partial Class Formulario
         ' ListView1
         ' 
         ListView1.BackColor = Color.LightSkyBlue
-        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader3, ColumnHeader4, ColumnHeader5, ColumnHeader6, ColumnHeader7})
+        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1, ColumnHeader2, ColumnHeader7, ColumnHeader4, ColumnHeader5, ColumnHeader3})
         ListView1.FullRowSelect = True
         ListView1.GridLines = True
         ListView1.HideSelection = True
-        ListView1.Location = New Point(121, 270)
+        ListView1.Location = New Point(100, 270)
         ListView1.Margin = New Padding(3, 2, 3, 2)
         ListView1.Name = "ListView1"
         ListView1.Size = New Size(800, 167)
@@ -221,64 +220,61 @@ Partial Class Formulario
         ' 
         ' ColumnHeader1
         ' 
-        ColumnHeader1.Text = "Nº Contacto"
+        ColumnHeader1.Text = "Id"
         ColumnHeader1.Width = 95
         ' 
         ' ColumnHeader2
         ' 
-        ColumnHeader2.Text = "                  Nombre"
+        ColumnHeader2.Text = "Titulo"
         ColumnHeader2.Width = 200
         ' 
         ' ColumnHeader3
         ' 
-        ColumnHeader3.Text = "    Tipo"
+        ColumnHeader3.Text = "Calificación"
         ColumnHeader3.Width = 70
         ' 
         ' ColumnHeader4
         ' 
-        ColumnHeader4.Text = "        e-mail"
+        ColumnHeader4.Text = "Año"
         ColumnHeader4.Width = 120
         ' 
         ' ColumnHeader5
         ' 
-        ColumnHeader5.Text = "    Móvil"
+        ColumnHeader5.Text = "Genero"
         ColumnHeader5.Width = 80
-        ' 
-        ' ColumnHeader6
-        ' 
-        ColumnHeader6.Text = "          Dirección"
-        ColumnHeader6.Width = 150
         ' 
         ' ColumnHeader7
         ' 
-        ColumnHeader7.Text = "Población"
+        ColumnHeader7.Text = "Director"
         ColumnHeader7.Width = 80
         ' 
-        ' GroupBox2
+        ' grBx_eliminar
         ' 
-        GroupBox2.Controls.Add(btn_eliminar)
-        GroupBox2.Controls.Add(ListView2)
-        GroupBox2.ForeColor = Color.White
-        GroupBox2.Location = New Point(731, 12)
-        GroupBox2.Name = "GroupBox2"
-        GroupBox2.Size = New Size(272, 225)
-        GroupBox2.TabIndex = 17
-        GroupBox2.TabStop = False
-        GroupBox2.Text = "GroupBox2"
+        grBx_eliminar.Controls.Add(CheckedListBox)
+        grBx_eliminar.Controls.Add(btn_eliminar)
+        grBx_eliminar.ForeColor = Color.White
+        grBx_eliminar.Location = New Point(810, 12)
+        grBx_eliminar.Name = "grBx_eliminar"
+        grBx_eliminar.Size = New Size(150, 225)
+        grBx_eliminar.TabIndex = 17
+        grBx_eliminar.TabStop = False
+        grBx_eliminar.Text = "Eliminar"
         ' 
-        ' ListView2
+        ' CheckedListBox
         ' 
-        ListView2.Location = New Point(6, 22)
-        ListView2.Name = "ListView2"
-        ListView2.Size = New Size(189, 190)
-        ListView2.TabIndex = 0
-        ListView2.UseCompatibleStateImageBehavior = False
+        CheckedListBox.Font = New Font("Segoe UI", 10F)
+        CheckedListBox.FormattingEnabled = True
+        CheckedListBox.Location = New Point(6, 22)
+        CheckedListBox.Name = "CheckedListBox"
+        CheckedListBox.Size = New Size(138, 164)
+        CheckedListBox.TabIndex = 2
         ' 
         ' btn_eliminar
         ' 
-        btn_eliminar.Location = New Point(212, 187)
+        btn_eliminar.ForeColor = Color.Black
+        btn_eliminar.Location = New Point(40, 194)
         btn_eliminar.Name = "btn_eliminar"
-        btn_eliminar.Size = New Size(75, 23)
+        btn_eliminar.Size = New Size(70, 23)
         btn_eliminar.TabIndex = 1
         btn_eliminar.Text = "Eliminar"
         btn_eliminar.UseVisualStyleBackColor = True
@@ -288,18 +284,18 @@ Partial Class Formulario
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GrayText
-        ClientSize = New Size(1027, 477)
-        Controls.Add(GroupBox2)
+        ClientSize = New Size(984, 477)
+        Controls.Add(grBx_eliminar)
         Controls.Add(ListView1)
-        Controls.Add(GroupBox1)
+        Controls.Add(grBx_nuevo)
         Margin = New Padding(3, 2, 3, 2)
         MaximizeBox = False
         MinimizeBox = False
         Name = "Formulario"
         Text = " "
-        GroupBox1.ResumeLayout(False)
-        GroupBox1.PerformLayout()
-        GroupBox2.ResumeLayout(False)
+        grBx_nuevo.ResumeLayout(False)
+        grBx_nuevo.PerformLayout()
+        grBx_eliminar.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -309,7 +305,7 @@ Partial Class Formulario
     Friend WithEvents txtBx_nombre As TextBox
     Friend WithEvents cmbBx_genero As ComboBox
     Friend WithEvents lbl_genero As Label
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents grBx_nuevo As GroupBox
     Friend WithEvents btn_salir As Button
     Friend WithEvents btn_cancelar As Button
     Friend WithEvents btn_agregar As Button
@@ -319,14 +315,13 @@ Partial Class Formulario
     Friend WithEvents ColumnHeader3 As ColumnHeader
     Friend WithEvents ColumnHeader4 As ColumnHeader
     Friend WithEvents ColumnHeader5 As ColumnHeader
-    Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents grBx_eliminar As GroupBox
     Friend WithEvents txtBx_año As TextBox
     Friend WithEvents lbl_año As Label
     Friend WithEvents txtBx_calificación As TextBox
     Friend WithEvents lbl_calificacion As Label
     Friend WithEvents btn_eliminar As Button
-    Friend WithEvents ListView2 As ListView
+    Friend WithEvents CheckedListBox As CheckedListBox
 
 End Class
