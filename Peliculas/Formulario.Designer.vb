@@ -25,7 +25,7 @@ Partial Class Formulario
         txtBx_id = New TextBox()
         lbl_contacto = New Label()
         lbl_nombre = New Label()
-        txtBx_nombre = New TextBox()
+        txtBx_titulo = New TextBox()
         cmbBx_genero = New ComboBox()
         lbl_genero = New Label()
         grBx_nuevo = New GroupBox()
@@ -86,13 +86,13 @@ Partial Class Formulario
         lbl_nombre.Text = "Nombre"
         lbl_nombre.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' txtBx_nombre
+        ' txtBx_titulo
         ' 
-        txtBx_nombre.Location = New Point(113, 82)
-        txtBx_nombre.Margin = New Padding(3, 2, 3, 2)
-        txtBx_nombre.Name = "txtBx_nombre"
-        txtBx_nombre.Size = New Size(126, 23)
-        txtBx_nombre.TabIndex = 5
+        txtBx_titulo.Location = New Point(113, 82)
+        txtBx_titulo.Margin = New Padding(3, 2, 3, 2)
+        txtBx_titulo.Name = "txtBx_titulo"
+        txtBx_titulo.Size = New Size(126, 23)
+        txtBx_titulo.TabIndex = 5
         ' 
         ' cmbBx_genero
         ' 
@@ -106,7 +106,7 @@ Partial Class Formulario
         ' lbl_genero
         ' 
         lbl_genero.AutoSize = True
-        lbl_genero.Location = New Point(36, 133)
+        lbl_genero.Location = New Point(29, 133)
         lbl_genero.Name = "lbl_genero"
         lbl_genero.Size = New Size(45, 15)
         lbl_genero.TabIndex = 13
@@ -130,7 +130,7 @@ Partial Class Formulario
         grBx_nuevo.Controls.Add(btn_agregar)
         grBx_nuevo.Controls.Add(txtBx_id)
         grBx_nuevo.Controls.Add(lbl_contacto)
-        grBx_nuevo.Controls.Add(txtBx_nombre)
+        grBx_nuevo.Controls.Add(txtBx_titulo)
         grBx_nuevo.Controls.Add(lbl_nombre)
         grBx_nuevo.ForeColor = SystemColors.ButtonHighlight
         grBx_nuevo.Location = New Point(40, 11)
@@ -353,7 +353,7 @@ Partial Class Formulario
     Friend WithEvents txtBx_id As TextBox
     Friend WithEvents lbl_contacto As Label
     Friend WithEvents lbl_nombre As Label
-    Friend WithEvents txtBx_nombre As TextBox
+    Friend WithEvents txtBx_titulo As TextBox
     Friend WithEvents cmbBx_genero As ComboBox
     Friend WithEvents lbl_genero As Label
     Friend WithEvents grBx_nuevo As GroupBox

@@ -10,16 +10,30 @@ Public Class Formulario
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
         Dim item As New ListViewItem(txtBx_id.Text)
         ListView1.Items.Add(item)
-        item.SubItems.Add(txtBx_nombre.Text)
-        item.SubItems.Add(txtBx_calificación.Text)
+        item.SubItems.Add(txtBx_titulo.Text)
+        item.SubItems.Add(txtBx_director.Text)
+        item.SubItems.Add(txtBx_protagonista.Text)
         item.SubItems.Add(txtBx_año.Text)
         item.SubItems.Add(cmbBx_genero.Text)
-        item.SubItems.Add(txtBx_protagonista.Text)
+        item.SubItems.Add(txtBx_calificación.Text)
+
+        limpiar()
+    End Sub
+    Private Sub btn_cancelar_Click(sender As Object, e As EventArgs) Handles btn_cancelar.Click
+        limpiar()
     End Sub
 
 
 
+    Private Sub limpiar()
+        txtBx_titulo.Clear()
+        txtBx_director.Clear()
+        txtBx_protagonista.Clear()
+        txtBx_año.Clear()
+        cmbBx_genero.SelectedIndex = -1
+        txtBx_calificación.Clear()
 
+    End Sub
     Private Sub idAutoNum()
         txtBx_id.Text = ListView1.Items.Count()
     End Sub
@@ -111,5 +125,7 @@ Public Class Formulario
             MessageBox.Show("Error al borrar los generos: " & ex.Message)
         End Try
     End Sub
+
+
 End Class
 
