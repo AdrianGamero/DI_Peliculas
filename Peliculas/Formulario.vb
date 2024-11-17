@@ -5,6 +5,7 @@ Public Class Formulario
     Dim FICHERO_GENEROS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\generos.txt")
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        idAutoNum()
 
     End Sub
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
@@ -16,11 +17,34 @@ Public Class Formulario
         item.SubItems.Add(txtBx_año.Text)
         item.SubItems.Add(cmbBx_genero.Text)
         item.SubItems.Add(txtBx_calificación.Text)
+        CheckedListBox.Items.Add(txtBx_titulo.Text)
 
         limpiar()
+
+        idAutoNum()
+
+
     End Sub
     Private Sub btn_cancelar_Click(sender As Object, e As EventArgs) Handles btn_cancelar.Click
         limpiar()
+    End Sub
+    Private Sub btn_eliminar_Click(sender As Object, e As EventArgs) Handles btn_eliminar.Click
+        For i As Integer = CheckedListBox.CheckedIndices.Count - 1 To 0 Step -1
+            Dim index As Integer = CheckedListBox.CheckedIndices(i)
+
+            Dim pelicula As String = CheckedListBox.Items(index).ToString()
+
+            CheckedListBox.Items.RemoveAt(index)
+
+            For Each item As ListViewItem In ListView1.Items
+                If item.SubItems(1).Text = pelicula Then
+                    ListView1.Items.Remove(item)
+                    Exit For
+                End If
+            Next
+        Next
+        idAutoNum()
+
     End Sub
 
 
@@ -127,5 +151,18 @@ Public Class Formulario
     End Sub
 
 
+
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+        If ListView1.SelectedItems.Count > 0 Then
+            Dim item As ListViewItem = ListView1.SelectedItems(0)
+            txtBx_id.Text = item.Text
+            txtBx_titulo.Text = item.SubItems(1).Text
+            txtBx_director.Text = item.SubItems(2).Text
+
+
+
+        End If
+    End Sub
 End Class
 

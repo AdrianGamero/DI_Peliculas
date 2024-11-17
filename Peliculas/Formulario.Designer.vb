@@ -259,6 +259,7 @@ Partial Class Formulario
         ListView1.HideSelection = True
         ListView1.Location = New Point(40, 283)
         ListView1.Margin = New Padding(3, 2, 3, 2)
+        ListView1.MultiSelect = False
         ListView1.Name = "ListView1"
         ListView1.Size = New Size(800, 167)
         ListView1.TabIndex = 16
