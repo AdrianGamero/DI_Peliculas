@@ -147,7 +147,7 @@ Partial Class Formulario
         txtBx_director.Location = New Point(347, 85)
         txtBx_director.Margin = New Padding(3, 2, 3, 2)
         txtBx_director.Name = "txtBx_director"
-        txtBx_director.Size = New Size(155, 23)
+        txtBx_director.Size = New Size(171, 23)
         txtBx_director.TabIndex = 24
         ' 
         ' lbl_director
@@ -166,7 +166,7 @@ Partial Class Formulario
         txtBx_protagonista.Location = New Point(347, 133)
         txtBx_protagonista.Margin = New Padding(3, 2, 3, 2)
         txtBx_protagonista.Name = "txtBx_protagonista"
-        txtBx_protagonista.Size = New Size(145, 23)
+        txtBx_protagonista.Size = New Size(171, 23)
         txtBx_protagonista.TabIndex = 22
         ' 
         ' lbl_protagonista
@@ -200,7 +200,7 @@ Partial Class Formulario
         ' 
         ' txtBx_calificación
         ' 
-        txtBx_calificación.Location = New Point(452, 46)
+        txtBx_calificación.Location = New Point(468, 46)
         txtBx_calificación.Margin = New Padding(3, 2, 3, 2)
         txtBx_calificación.Name = "txtBx_calificación"
         txtBx_calificación.Size = New Size(50, 23)
@@ -210,7 +210,7 @@ Partial Class Formulario
         ' 
         lbl_calificacion.AutoSize = True
         lbl_calificacion.ImageAlign = ContentAlignment.MiddleRight
-        lbl_calificacion.Location = New Point(368, 49)
+        lbl_calificacion.Location = New Point(384, 49)
         lbl_calificacion.Name = "lbl_calificacion"
         lbl_calificacion.Size = New Size(69, 15)
         lbl_calificacion.TabIndex = 19
