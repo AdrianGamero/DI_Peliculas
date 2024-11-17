@@ -11,20 +11,10 @@ Public Class Formulario
         Dim item As New ListViewItem(txtBx_id.Text)
         ListView1.Items.Add(item)
         item.SubItems.Add(txtBx_nombre.Text)
-        item.SubItems.Add(cmbBx_tipo_contacto.Text)
-        item.SubItems.Add(txtBx_email.Text)
-        item.SubItems.Add(txtBx_movil.Text)
-        item.SubItems.Add(txtBx_direccion.Text)
-        item.SubItems.Add(cmbBx_poblacion.Text)
-
-        txtBx_contacto.Clear()
-        txtBx_nombre.Clear()
-        cmbBx_tipo_contacto.SelectedIndex = -1
-        txtBx_email.Clear()
-        txtBx_movil.Clear()
-        txtBx_direccion.Clear()
-        cmbBx_poblacion.SelectedIndex = -1
-        contactoAutonum()
+        item.SubItems.Add(txtBx_calificación.Text)
+        item.SubItems.Add(txtBx_año.Text)
+        item.SubItems.Add(cmbBx_genero.Text)
+        item.SubItems.Add(txtBx_protagonista.Text)
     End Sub
 
 
@@ -121,7 +111,5 @@ Public Class Formulario
             MessageBox.Show("Error al borrar los generos: " & ex.Message)
         End Try
     End Sub
-
-
 End Class
 
