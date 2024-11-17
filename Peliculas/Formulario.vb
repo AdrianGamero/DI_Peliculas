@@ -159,10 +159,25 @@ Public Class Formulario
             txtBx_id.Text = item.Text
             txtBx_titulo.Text = item.SubItems(1).Text
             txtBx_director.Text = item.SubItems(2).Text
+            txtBx_protagonista.Text = item.SubItems(3).Text
+            txtBx_año.Text = item.SubItems(4).Text
+            cmbBx_genero.Text = item.SubItems(5).Text
+            txtBx_calificación.Text = item.SubItems(6).Text
 
-
-
+            btn_guardar.Visible = True
         End If
+    End Sub
+
+    Private Sub btn_guardar_Click(sender As Object, e As EventArgs) Handles btn_guardar.Click
+        Dim item As ListViewItem = ListView1.Items(txtBx_id.Text)
+        item.SubItems(1).Text = txtBx_titulo.Text
+        item.SubItems(2).Text = txtBx_director.Text
+        item.SubItems(3).Text = txtBx_protagonista.Text
+        item.SubItems(4).Text = txtBx_año.Text
+        item.SubItems(5).Text = cmbBx_genero.Text
+        item.SubItems(6).Text = txtBx_calificación.Text
+
+        btn_guardar.Visible = False
     End Sub
 End Class
 

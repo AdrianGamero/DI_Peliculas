@@ -29,6 +29,7 @@ Partial Class Formulario
         cmbBx_genero = New ComboBox()
         lbl_genero = New Label()
         grBx_nuevo = New GroupBox()
+        btn_guardar = New Button()
         txtBx_director = New TextBox()
         lbl_director = New Label()
         txtBx_protagonista = New TextBox()
@@ -115,6 +116,7 @@ Partial Class Formulario
         ' 
         ' grBx_nuevo
         ' 
+        grBx_nuevo.Controls.Add(btn_guardar)
         grBx_nuevo.Controls.Add(txtBx_director)
         grBx_nuevo.Controls.Add(lbl_director)
         grBx_nuevo.Controls.Add(txtBx_protagonista)
@@ -141,6 +143,18 @@ Partial Class Formulario
         grBx_nuevo.TabIndex = 15
         grBx_nuevo.TabStop = False
         grBx_nuevo.Text = "Nueva pelicula"
+        ' 
+        ' btn_guardar
+        ' 
+        btn_guardar.ForeColor = Color.Black
+        btn_guardar.Location = New Point(50, 200)
+        btn_guardar.Margin = New Padding(3, 2, 3, 2)
+        btn_guardar.Name = "btn_guardar"
+        btn_guardar.Size = New Size(82, 22)
+        btn_guardar.TabIndex = 26
+        btn_guardar.Text = "GUARDAR"
+        btn_guardar.UseVisualStyleBackColor = True
+        btn_guardar.Visible = False
         ' 
         ' txtBx_director
         ' 
@@ -380,5 +394,6 @@ Partial Class Formulario
     Friend WithEvents ColumnHeader8 As ColumnHeader
     Friend WithEvents txtBx_director As TextBox
     Friend WithEvents lbl_director As Label
+    Friend WithEvents btn_guardar As Button
 
 End Class
