@@ -8,4 +8,10 @@
         Me.Hide()
         Timer1.Enabled = False
     End Sub
+
+    Private Sub btn_iniciar_Click(sender As Object, e As EventArgs) Handles btn_iniciar.Click
+        Formulario.Show()
+        Me.Hide()
+        Timer1.Enabled = False
+    End Sub
 End Class

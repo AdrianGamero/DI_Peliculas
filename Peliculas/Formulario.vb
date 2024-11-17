@@ -1,10 +1,13 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 
 Public Class Formulario
-    Dim FICHERO_PELICULAS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\peliculas.txt")
-    Dim FICHERO_GENEROS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\generos.txt")
+    Dim FICHERO_PELICULAS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\Peliculas.txt")
+    Dim FICHERO_GENEROS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\Generos.txt")
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        leerGeneros()
+        leerPeliculas()
         idAutoNum()
 
     End Sub
@@ -18,6 +21,9 @@ Public Class Formulario
         item.SubItems.Add(cmbBx_genero.Text)
         item.SubItems.Add(txtBx_calificación.Text)
         CheckedListBox.Items.Add(txtBx_titulo.Text)
+        If Not cmbBx_genero.Items.Contains(cmbBx_genero.Text) Then
+            cmbBx_genero.Items.Add(cmbBx_genero.Text)
+        End If
 
         limpiar()
 
@@ -43,9 +49,17 @@ Public Class Formulario
                 End If
             Next
         Next
-        idAutoNum()
 
+        Dim id As Integer = 0
+        For Each item As ListViewItem In ListView1.Items
+            item.Text = id
+            id = id + 1
+        Next
+
+        idAutoNum()
     End Sub
+
+
 
 
 
@@ -72,6 +86,7 @@ Public Class Formulario
                     Dim palabras() As String = linea.Split(","c)
                     Dim item As New ListViewItem(palabras(0))
                     ListView1.Items.Add(item)
+                    CheckedListBox.Items.Add(palabras(1))
                     For i As Integer = 1 To palabras.Length - 1
                         item.SubItems.Add(palabras(i))
                     Next
@@ -90,7 +105,7 @@ Public Class Formulario
             Using writer As StreamWriter = New StreamWriter(FICHERO_PELICULAS, True)
                 For Each item As ListViewItem In ListView1.Items
                     Dim linea As String = item.Text
-                    For i As Integer = 0 To item.SubItems.Count - 1
+                    For i As Integer = 1 To item.SubItems.Count - 1
                         linea &= "," & item.SubItems(i).Text
                     Next
                     writer.WriteLine(linea)
@@ -134,7 +149,6 @@ Public Class Formulario
     Private Sub borrarPeliculas()
         Try
             Using writer As StreamWriter = New StreamWriter(FICHERO_PELICULAS, False)
-
             End Using
         Catch ex As Exception
             MessageBox.Show("Error al borrar las peliculas: " & ex.Message)
@@ -143,7 +157,6 @@ Public Class Formulario
     Private Sub borrarGeneros()
         Try
             Using writer As StreamWriter = New StreamWriter(FICHERO_GENEROS, False)
-
             End Using
         Catch ex As Exception
             MessageBox.Show("Error al borrar los generos: " & ex.Message)
@@ -169,15 +182,67 @@ Public Class Formulario
     End Sub
 
     Private Sub btn_guardar_Click(sender As Object, e As EventArgs) Handles btn_guardar.Click
-        Dim item As ListViewItem = ListView1.Items(txtBx_id.Text)
+
+        Dim pelisSelec As Integer = txtBx_id.Text
+        Dim item As ListViewItem = ListView1.Items(pelisSelec)
+
         item.SubItems(1).Text = txtBx_titulo.Text
         item.SubItems(2).Text = txtBx_director.Text
         item.SubItems(3).Text = txtBx_protagonista.Text
         item.SubItems(4).Text = txtBx_año.Text
         item.SubItems(5).Text = cmbBx_genero.Text
         item.SubItems(6).Text = txtBx_calificación.Text
+        limpiar()
+        idAutoNum()
 
         btn_guardar.Visible = False
+
+    End Sub
+
+    Private Sub Formulario_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        guardarGeneros()
+        guardarPeliculas()
+        Application.Exit()
+    End Sub
+
+    Private Sub btn_salir_Click(sender As Object, e As EventArgs) Handles btn_salir.Click
+        Me.Close()
+    End Sub
+
+
+
+    Private Sub txtBx_titulo_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_titulo.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            cmbBx_genero.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbBx_genero_KeyUp(sender As Object, e As KeyEventArgs) Handles cmbBx_genero.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            txtBx_año.Focus()
+        End If
+    End Sub
+
+    Private Sub txtBx_año_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_año.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            txtBx_director.Focus()
+        End If
+    End Sub
+
+    Private Sub txtBx_director_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_director.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            txtBx_protagonista.Focus()
+        End If
+    End Sub
+
+    Private Sub txtBx_protagonista_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_protagonista.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            txtBx_calificación.Focus()
+        End If
+    End Sub
+
+    Private Sub txtBx_calificación_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_calificación.KeyUp
+        btn_agregar.Focus()
     End Sub
 End Class
 
