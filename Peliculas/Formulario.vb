@@ -9,6 +9,7 @@ Public Class Formulario
         leerGeneros()
         leerPeliculas()
         idAutoNum()
+        duplicarListView()
 
     End Sub
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
@@ -125,6 +126,7 @@ Public Class Formulario
                 While (reader.Peek >= 0)
                     linea = reader.ReadLine
                     cmbBx_genero.Items.Add(linea)
+                    cmbBx_gen_filtro.Items.Add(linea)
                 End While
 
             End Using
@@ -243,6 +245,50 @@ Public Class Formulario
 
     Private Sub txtBx_calificación_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_calificación.KeyUp
         btn_agregar.Focus()
+    End Sub
+
+    Private Sub btn_filtrar_Click(sender As Object, e As EventArgs) Handles btn_filtrar.Click
+        grBx_filtros.Visible = True
+    End Sub
+
+    Private Sub cmbBx_cali_fil_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btn_cfiltrar_Click(sender As Object, e As EventArgs) Handles btn_cfiltrar.Click
+        ListView_mostrar.Clear()
+
+        For Each itemOrigen As ListViewItem In ListView1.Items
+            If itemOrigen.SubItems(4).Text > txtBx_año_min.Text And itemOrigen.SubItems(4).Text > txtBx_año_max.Text Then
+                If itemOrigen.SubItems(6).Text > txtB_cali_min.Text And itemOrigen.SubItems(6).Text > txtB_cali_max.Text Then
+                    If itemOrigen.SubItems(5).Text = cmbBx_gen_filtro.Text Then
+                        Dim nuevoItem As ListViewItem = New ListViewItem(itemOrigen.Text)
+                        For i As Integer = 1 To itemOrigen.SubItems.Count - 1
+                            nuevoItem.SubItems.Add(itemOrigen.SubItems(i).Text)
+                        Next
+                        ListView_mostrar.Items.Add(nuevoItem)
+                    End If
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub duplicarListView()
+        If ListView_mostrar.Columns.Count = 0 Then
+            For Each columna As ColumnHeader In ListView_mostrar.Columns
+                ListView1.Columns.Add(DirectCast(columna.Clone(), ColumnHeader))
+            Next
+        End If
+
+        For Each itemOrigen As ListViewItem In ListView1.Items
+            ' Crear un nuevo ítem con el mismo texto y subelementos
+            Dim nuevoItem As ListViewItem = New ListViewItem(itemOrigen.Text)
+            For i As Integer = 1 To itemOrigen.SubItems.Count - 1
+                nuevoItem.SubItems.Add(itemOrigen.SubItems(i).Text)
+            Next
+            ' Agregar el nuevo ítem al ListView destino
+            ListView_mostrar.Items.Add(nuevoItem)
+        Next
     End Sub
 End Class
 
