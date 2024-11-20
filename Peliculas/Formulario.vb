@@ -29,6 +29,7 @@ Public Class Formulario
         limpiar()
 
         idAutoNum()
+        duplicarListView()
 
 
     End Sub
@@ -56,13 +57,9 @@ Public Class Formulario
             item.Text = id
             id = id + 1
         Next
-
+        duplicarListView()
         idAutoNum()
     End Sub
-
-
-
-
 
     Private Sub limpiar()
         txtBx_titulo.Clear()
@@ -168,9 +165,9 @@ Public Class Formulario
 
 
 
-    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
-        If ListView1.SelectedItems.Count > 0 Then
-            Dim item As ListViewItem = ListView1.SelectedItems(0)
+    Private Sub ListView_mostrar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView_mostrar.SelectedIndexChanged
+        If ListView_mostrar.SelectedItems.Count > 0 Then
+            Dim item As ListViewItem = ListView_mostrar.SelectedItems(0)
             txtBx_id.Text = item.Text
             txtBx_titulo.Text = item.SubItems(1).Text
             txtBx_director.Text = item.SubItems(2).Text
@@ -178,7 +175,6 @@ Public Class Formulario
             txtBx_año.Text = item.SubItems(4).Text
             cmbBx_genero.Text = item.SubItems(5).Text
             txtBx_calificación.Text = item.SubItems(6).Text
-
             btn_guardar.Visible = True
         End If
     End Sub
@@ -196,7 +192,7 @@ Public Class Formulario
         item.SubItems(6).Text = txtBx_calificación.Text
         limpiar()
         idAutoNum()
-
+        duplicarListView()
         btn_guardar.Visible = False
 
     End Sub
@@ -256,16 +252,29 @@ Public Class Formulario
     End Sub
 
     Private Sub btn_cfiltrar_Click(sender As Object, e As EventArgs) Handles btn_cfiltrar.Click
-        ListView_mostrar.Clear()
+        ' Limpiar la lista de destino
+        ListView_mostrar.Items.Clear()
 
+        ' Establecer valores por defecto si los campos están vacíos
+        Dim añoMinimo As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_min.Text), 1900, CInt(txtBx_año_min.Text))
+        Dim añoMaximo As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_max.Text), 2024, CInt(txtBx_año_max.Text))
+        Dim calificacionMinima As Double = If(String.IsNullOrWhiteSpace(txtB_cali_min.Text), 0, CDbl(txtB_cali_min.Text))
+        Dim calificacionMaxima As Double = If(String.IsNullOrWhiteSpace(txtB_cali_max.Text), 10, CDbl(txtB_cali_max.Text))
+
+        ' Recorrer los elementos del ListView original
         For Each itemOrigen As ListViewItem In ListView1.Items
-            If itemOrigen.SubItems(4).Text > txtBx_año_min.Text And itemOrigen.SubItems(4).Text > txtBx_año_max.Text Then
-                If itemOrigen.SubItems(6).Text > txtB_cali_min.Text And itemOrigen.SubItems(6).Text > txtB_cali_max.Text Then
-                    If itemOrigen.SubItems(5).Text = cmbBx_gen_filtro.Text Then
+            ' Verificar filtros de año
+            If itemOrigen.SubItems(4).Text >= añoMinimo.ToString() AndAlso itemOrigen.SubItems(4).Text <= añoMaximo.ToString() Then
+                ' Verificar filtros de calificación
+                If itemOrigen.SubItems(6).Text >= calificacionMinima.ToString() AndAlso itemOrigen.SubItems(6).Text <= calificacionMaxima.ToString() Then
+                    ' Verificar filtro de género (si no se seleccionó nada, se omite este filtro)
+                    If String.IsNullOrWhiteSpace(cmbBx_gen_filtro.Text) OrElse itemOrigen.SubItems(5).Text = cmbBx_gen_filtro.Text Then
+                        ' Crear un nuevo elemento para el ListView destino
                         Dim nuevoItem As ListViewItem = New ListViewItem(itemOrigen.Text)
                         For i As Integer = 1 To itemOrigen.SubItems.Count - 1
                             nuevoItem.SubItems.Add(itemOrigen.SubItems(i).Text)
                         Next
+                        ' Agregar el nuevo ítem al ListView destino
                         ListView_mostrar.Items.Add(nuevoItem)
                     End If
                 End If
@@ -280,13 +289,12 @@ Public Class Formulario
             Next
         End If
 
+        ListView_mostrar.Items.Clear()
         For Each itemOrigen As ListViewItem In ListView1.Items
-            ' Crear un nuevo ítem con el mismo texto y subelementos
             Dim nuevoItem As ListViewItem = New ListViewItem(itemOrigen.Text)
             For i As Integer = 1 To itemOrigen.SubItems.Count - 1
                 nuevoItem.SubItems.Add(itemOrigen.SubItems(i).Text)
             Next
-            ' Agregar el nuevo ítem al ListView destino
             ListView_mostrar.Items.Add(nuevoItem)
         Next
     End Sub

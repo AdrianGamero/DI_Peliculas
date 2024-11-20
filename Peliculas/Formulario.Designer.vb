@@ -313,6 +313,7 @@ Partial Class Formulario
         txtBx_año_max.PlaceholderText = "Max."
         txtBx_año_max.Size = New Size(52, 23)
         txtBx_año_max.TabIndex = 11
+        txtBx_año_max.Tag = "2024"
         ' 
         ' txtBx_año_min
         ' 
@@ -321,6 +322,7 @@ Partial Class Formulario
         txtBx_año_min.PlaceholderText = "Min."
         txtBx_año_min.Size = New Size(52, 23)
         txtBx_año_min.TabIndex = 10
+        txtBx_año_min.Tag = "1800"
         ' 
         ' txtB_cali_max
         ' 
@@ -329,6 +331,7 @@ Partial Class Formulario
         txtB_cali_max.PlaceholderText = "Max."
         txtB_cali_max.Size = New Size(52, 23)
         txtB_cali_max.TabIndex = 9
+        txtB_cali_max.Tag = "10"
         ' 
         ' txtB_cali_min
         ' 
@@ -337,6 +340,7 @@ Partial Class Formulario
         txtB_cali_min.PlaceholderText = "Min."
         txtB_cali_min.Size = New Size(52, 23)
         txtB_cali_min.TabIndex = 8
+        txtB_cali_min.Tag = "0"
         ' 
         ' btn_cancel_fil
         ' 
