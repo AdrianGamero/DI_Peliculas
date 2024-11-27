@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
 
 Public Class Listado
     Dim FICHERO_PELICULAS As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Ficheros\Peliculas.txt")
@@ -6,7 +7,11 @@ Public Class Listado
         actuaizarPeliculas()
     End Sub
 
+
     Private Sub btn_cfiltrar_Click(sender As Object, e As EventArgs) Handles btn_cfiltrar.Click
+        actuaizarPeliculas()
+
+
         Dim añoMin As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_min.Text), 0, CInt(txtBx_año_min.Text))
         Dim añoMax As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_max.Text), Integer.MaxValue, CInt(txtBx_año_max.Text))
         Dim calificacionMin As Double = If(String.IsNullOrWhiteSpace(txtB_cali_min.Text), 0, CDbl(txtB_cali_min.Text))
@@ -17,6 +22,7 @@ Public Class Listado
             Dim año As Integer = CInt(item.SubItems(4).Text)
             Dim calificacion As Double = CDbl(item.SubItems(6).Text)
             Dim generoPelicula As String = item.SubItems(5).Text.ToLower()
+
             If año < añoMin OrElse año > añoMax OrElse
            calificacion < calificacionMin OrElse calificacion > calificacionMax OrElse
            (Not String.IsNullOrEmpty(genero) AndAlso Not generoPelicula.Contains(genero)) Then
@@ -47,6 +53,7 @@ Public Class Listado
     End Sub
 
     Public Sub guardarPeliculas()
+        borrarPeliculas()
         Try
             Using writer As StreamWriter = New StreamWriter(FICHERO_PELICULAS, True)
                 For Each item As ListViewItem In listView_guardar.Items
@@ -81,7 +88,8 @@ Public Class Listado
                 End While
 
             End Using
-            borrarPeliculas()
+            actuaizarPeliculas()
+
 
         Catch ex As Exception
             MessageBox.Show("Error al leer las peliculas: " & ex.Message)
@@ -97,7 +105,7 @@ Public Class Listado
         End Try
     End Sub
 
-    Private Sub actuaizarPeliculas()
+    Public Sub actuaizarPeliculas()
         listView_mostrar.Items.Clear()
         For Each item As ListViewItem In listView_guardar.Items
             listView_mostrar.Items.Add(CType(item.Clone(), ListViewItem))
@@ -106,12 +114,13 @@ Public Class Listado
 
     Private Sub btn_cancel_fil_Click(sender As Object, e As EventArgs) Handles btn_cancel_fil.Click
         limpiar()
+        grBx_filtros.Visible = False
     End Sub
 
     Private Sub btn_limpiar_Click(sender As Object, e As EventArgs) Handles btn_limpiar.Click
         limpiar()
         actuaizarPeliculas()
-        cmbBx_gen_filtro.Visible = False
+        grBx_filtros.Visible = False
     End Sub
     Private Sub limpiar()
         txtBx_año_min.Clear()
@@ -129,4 +138,12 @@ Public Class Listado
     Private Sub btn_filtrar_Click(sender As Object, e As EventArgs) Handles btn_filtrar.Click
         grBx_filtros.Visible = True
     End Sub
+
+    Private Sub Listado_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        guardarPeliculas()
+        Formulario.guardarGeneros()
+        Application.Exit()
+    End Sub
+
+
 End Class

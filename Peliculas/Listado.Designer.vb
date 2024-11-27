@@ -245,7 +245,7 @@ Partial Class Listado
         listView_mostrar.FullRowSelect = True
         listView_mostrar.GridLines = True
         listView_mostrar.HideSelection = True
-        listView_mostrar.Location = New Point(12, 51)
+        listView_mostrar.Location = New Point(11, 51)
         listView_mostrar.Margin = New Padding(3, 2, 3, 2)
         listView_mostrar.MultiSelect = False
         listView_mostrar.Name = "listView_mostrar"

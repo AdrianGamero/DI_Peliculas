@@ -8,8 +8,6 @@ Public Class Formulario
         leerGeneros()
         Listado.leerPeliculas()
         idAutoNum()
-
-
     End Sub
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
         Dim item As New ListViewItem(txtBx_id.Text)
@@ -27,6 +25,8 @@ Public Class Formulario
 
         limpiar()
         idAutoNum()
+        Listado.actuaizarPeliculas()
+
 
 
     End Sub
@@ -54,6 +54,7 @@ Public Class Formulario
             item.Text = id
             id = id + 1
         Next
+        Listado.actuaizarPeliculas()
         idAutoNum()
     End Sub
 
@@ -83,12 +84,13 @@ Public Class Formulario
                 End While
 
             End Using
-            borrarGeneros()
         Catch ex As Exception
             MessageBox.Show("Error al leer los generos: " & ex.Message)
         End Try
     End Sub
-    Private Sub guardarGeneros()
+    Public Sub guardarGeneros()
+        borrarGeneros()
+
         Try
             Using writer As StreamWriter = New StreamWriter(FICHERO_GENEROS, True)
                 For i As Integer = 0 To cmbBx_genero.Items.Count - 1
