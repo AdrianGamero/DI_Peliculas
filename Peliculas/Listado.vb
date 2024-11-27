@@ -9,10 +9,14 @@ Public Class Listado
 
 
     Private Sub btn_cfiltrar_Click(sender As Object, e As EventArgs) Handles btn_cfiltrar.Click
+        'Se escriben todas la peliculas registradas para seleccionar los filtros
         actuaizarPeliculas()
+        'Se compreba que tanto la calificación como el año sean numericos para evitar errores 
         If Not IsNumeric(txtBx_año_max.Text) Or Not IsNumeric(txtBx_año_min.Text) Or Not IsNumeric(txtB_cali_max.Text) Or Not IsNumeric(txtB_cali_min.Text) Then
             MessageBox.Show(" El año y la calificaión deben ser numericos")
         Else
+            'Se comprueba el estado de todos los combobox y el group box y se meten en una variable,
+            'si están vacíos se le pone un valor por defecto y no se tendrá en cuenta para filtrar 
             Dim añoMin As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_min.Text), 0, CInt(txtBx_año_min.Text))
             Dim añoMax As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_max.Text), Integer.MaxValue, CInt(txtBx_año_max.Text))
             Dim calificacionMin As Double = If(String.IsNullOrWhiteSpace(txtB_cali_min.Text), 0, CDbl(txtB_cali_min.Text))
@@ -30,18 +34,16 @@ Public Class Listado
                     item.Remove()
                 End If
             Next
-
+            'Se cierra el groupbox de filtros
             grBx_filtros.Visible = False
         End If
-
-
-
     End Sub
 
 
 
     Private Sub ListView_mostrar_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listView_mostrar.SelectedIndexChanged
 
+        'Al seleccionar un elemento todos sus campos se añaden al primero formulario para modificar lo que se desee
         If listView_mostrar.SelectedItems.Count > 0 Then
             Dim item = listView_mostrar.SelectedItems(0)
             Formulario.txtBx_id.Text = item.Text
@@ -76,6 +78,7 @@ Public Class Listado
     End Sub
 
     Public Sub leerPeliculas()
+        'Se leen las peliculas del fichero y se añaden
         Try
             Using reader As StreamReader = New StreamReader(FICHERO_PELICULAS)
                 Dim linea As String
@@ -111,6 +114,7 @@ Public Class Listado
     End Sub
 
     Public Sub actuaizarPeliculas()
+        'Carga las peliculas guardadas en el listiview que ve el usuario
         listView_mostrar.Items.Clear()
         For Each item As ListViewItem In listView_guardar.Items
             listView_mostrar.Items.Add(CType(item.Clone(), ListViewItem))
@@ -123,11 +127,13 @@ Public Class Listado
     End Sub
 
     Private Sub btn_limpiar_Click(sender As Object, e As EventArgs) Handles btn_limpiar.Click
+        'Limpia todos los filtros
         limpiar()
         actuaizarPeliculas()
         grBx_filtros.Visible = False
     End Sub
     Private Sub limpiar()
+        'Limpia todos los campos de filtrado
         txtBx_año_min.Clear()
         txtBx_año_max.Clear()
         txtB_cali_min.Clear()

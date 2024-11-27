@@ -55,6 +55,7 @@ Public Class Formulario
         limpiar()
     End Sub
     Private Sub btn_eliminar_Click(sender As Object, e As EventArgs) Handles btn_eliminar.Click
+        'Elimina la pelicula del listview oculto y actualiza las peliculas que ve el usuario
         For i As Integer = CheckedListBox.CheckedIndices.Count - 1 To 0 Step -1
             Dim index As Integer = CheckedListBox.CheckedIndices(i)
 
@@ -69,7 +70,7 @@ Public Class Formulario
                 End If
             Next
         Next
-
+        'Cambia la id de todas las películas para que se ordenen y no haya saltos en las id
         Dim id As Integer = 0
         For Each item As ListViewItem In Listado.listView_guardar.Items
             item.Text = id
@@ -89,11 +90,13 @@ Public Class Formulario
 
     End Sub
     Private Sub idAutoNum()
+        'Establece la id de manera autonumerica
         txtBx_id.Text = Listado.listView_guardar.Items.Count()
     End Sub
 
 
     Private Sub leerGeneros()
+        'Lee los generos guardados en el fichero y los guarda en los combobox necesarios
         Try
             Using reader As StreamReader = New StreamReader(FICHERO_GENEROS)
                 Dim linea As String
@@ -110,6 +113,7 @@ Public Class Formulario
         End Try
     End Sub
     Public Sub guardarGeneros()
+        'guarda los generos en el fichero
         borrarGeneros()
 
         Try
@@ -126,6 +130,7 @@ Public Class Formulario
 
 
     Private Sub borrarGeneros()
+        'Limpia el fichero para evitar que se dupiquen datos
         Try
             Using writer As StreamWriter = New StreamWriter(FICHERO_GENEROS, False)
             End Using
@@ -136,6 +141,7 @@ Public Class Formulario
 
 
     Private Sub btn_guardar_Click(sender As Object, e As EventArgs) Handles btn_guardar.Click
+        'Guarda los cambios de una pelicula modificada
 
         Dim pelisSelec As Integer = txtBx_id.Text
         Dim item As ListViewItem = Listado.listView_guardar.Items(pelisSelec)
@@ -153,6 +159,7 @@ Public Class Formulario
     End Sub
 
     Private Sub Formulario_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        'Al cerrar el formulario se guardan las peliculas y los generos y se cierra la aplicación 
         guardarGeneros()
         Listado.guardarPeliculas()
         Application.Exit()
@@ -161,7 +168,6 @@ Public Class Formulario
     Private Sub btn_salir_Click(sender As Object, e As EventArgs) Handles btn_salir.Click
         Me.Close()
     End Sub
-
 
 
     Private Sub txtBx_titulo_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBx_titulo.KeyUp
@@ -201,6 +207,7 @@ Public Class Formulario
     End Sub
 
     Private Sub btn_verPeliculas_Click(sender As Object, e As EventArgs) Handles btn_verPeliculas.Click
+        'Me dirije al formulario donde se ven las peliculas
         Listado.Show()
         Me.Hide()
     End Sub
