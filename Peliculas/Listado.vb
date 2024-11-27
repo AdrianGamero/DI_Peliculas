@@ -10,27 +10,32 @@ Public Class Listado
 
     Private Sub btn_cfiltrar_Click(sender As Object, e As EventArgs) Handles btn_cfiltrar.Click
         actuaizarPeliculas()
+        If Not IsNumeric(txtBx_año_max.Text) Or Not IsNumeric(txtBx_año_min.Text) Or Not IsNumeric(txtB_cali_max.Text) Or Not IsNumeric(txtB_cali_min.Text) Then
+            MessageBox.Show(" El año y la calificaión deben ser numericos")
+        Else
+            Dim añoMin As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_min.Text), 0, CInt(txtBx_año_min.Text))
+            Dim añoMax As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_max.Text), Integer.MaxValue, CInt(txtBx_año_max.Text))
+            Dim calificacionMin As Double = If(String.IsNullOrWhiteSpace(txtB_cali_min.Text), 0, CDbl(txtB_cali_min.Text))
+            Dim calificacionMax As Double = If(String.IsNullOrWhiteSpace(txtB_cali_max.Text), 10, CDbl(txtB_cali_max.Text))
+            Dim genero As String = If(String.IsNullOrWhiteSpace(cmbBx_gen_filtro.Text), "", cmbBx_gen_filtro.Text.ToLower())
+
+            For Each item As ListViewItem In listView_mostrar.Items
+                Dim año As Integer = CInt(item.SubItems(4).Text)
+                Dim calificacion As Double = CDbl(item.SubItems(6).Text)
+                Dim generoPelicula As String = item.SubItems(5).Text.ToLower()
+
+                If año < añoMin OrElse año > añoMax OrElse
+               calificacion < calificacionMin OrElse calificacion > calificacionMax OrElse
+               (Not String.IsNullOrEmpty(genero) AndAlso Not generoPelicula.Contains(genero)) Then
+                    item.Remove()
+                End If
+            Next
+
+            grBx_filtros.Visible = False
+        End If
 
 
-        Dim añoMin As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_min.Text), 0, CInt(txtBx_año_min.Text))
-        Dim añoMax As Integer = If(String.IsNullOrWhiteSpace(txtBx_año_max.Text), Integer.MaxValue, CInt(txtBx_año_max.Text))
-        Dim calificacionMin As Double = If(String.IsNullOrWhiteSpace(txtB_cali_min.Text), 0, CDbl(txtB_cali_min.Text))
-        Dim calificacionMax As Double = If(String.IsNullOrWhiteSpace(txtB_cali_max.Text), 10, CDbl(txtB_cali_max.Text))
-        Dim genero As String = If(String.IsNullOrWhiteSpace(cmbBx_gen_filtro.Text), "", cmbBx_gen_filtro.Text.ToLower())
 
-        For Each item As ListViewItem In listView_mostrar.Items
-            Dim año As Integer = CInt(item.SubItems(4).Text)
-            Dim calificacion As Double = CDbl(item.SubItems(6).Text)
-            Dim generoPelicula As String = item.SubItems(5).Text.ToLower()
-
-            If año < añoMin OrElse año > añoMax OrElse
-           calificacion < calificacionMin OrElse calificacion > calificacionMax OrElse
-           (Not String.IsNullOrEmpty(genero) AndAlso Not generoPelicula.Contains(genero)) Then
-                item.Remove()
-            End If
-        Next
-
-        grBx_filtros.Visible = False
     End Sub
 
 

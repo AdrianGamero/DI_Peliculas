@@ -10,25 +10,46 @@ Public Class Formulario
         idAutoNum()
     End Sub
     Private Sub btn_agregar_Click(sender As Object, e As EventArgs) Handles btn_agregar.Click
-        Dim item As New ListViewItem(txtBx_id.Text)
-        Listado.listView_guardar.Items.Add(item)
-        item.SubItems.Add(txtBx_titulo.Text)
-        item.SubItems.Add(txtBx_director.Text)
-        item.SubItems.Add(txtBx_protagonista.Text)
-        item.SubItems.Add(txtBx_año.Text)
-        item.SubItems.Add(cmbBx_genero.Text)
-        item.SubItems.Add(txtBx_calificación.Text)
-        CheckedListBox.Items.Add(txtBx_titulo.Text)
-        If Not cmbBx_genero.Items.Contains(cmbBx_genero.Text) Then
-            cmbBx_genero.Items.Add(cmbBx_genero.Text)
-        End If
 
-        limpiar()
-        idAutoNum()
-        Listado.actuaizarPeliculas()
+        'Se busca en todos los elementos de groupbox y se comprueba que estén llenos
+        For Each control In grBx_nuevo.Controls
 
+            If TypeOf control Is TextBox Then
+                If String.IsNullOrWhiteSpace(CType(control, TextBox).Text) Then
+                    MessageBox.Show("Todos los campos deben estar llenos")
+                    Exit For
+                End If
+            ElseIf TypeOf control Is ComboBox Then
+                If String.IsNullOrWhiteSpace(CType(control, ComboBox).Text) Then
+                    MessageBox.Show("Todos los campos deben estar llenos")
+                    Exit For
+                Else
+                    'Si todos están llenos se comprueba que tel año y la calificación sean numeros
+                    If Not IsNumeric(txtBx_año.Text) Or Not IsNumeric(txtBx_calificación.Text) Then
+                        MessageBox.Show("El año y la calificación deben ser numericos")
+                    Else
+                        ' si todo esta correcto se guarda la película
+                        Dim item As New ListViewItem(txtBx_id.Text)
+                        Listado.listView_guardar.Items.Add(item)
+                        item.SubItems.Add(txtBx_titulo.Text)
+                        item.SubItems.Add(txtBx_director.Text)
+                        item.SubItems.Add(txtBx_protagonista.Text)
+                        item.SubItems.Add(txtBx_año.Text)
+                        item.SubItems.Add(cmbBx_genero.Text)
+                        item.SubItems.Add(txtBx_calificación.Text)
+                        CheckedListBox.Items.Add(txtBx_titulo.Text)
+                        'Si lo que se escribe en el combobox no etá en su lista se añade
+                        If Not cmbBx_genero.Items.Contains(cmbBx_genero.Text) Then
+                            cmbBx_genero.Items.Add(cmbBx_genero.Text)
+                        End If
 
-
+                        limpiar()
+                        idAutoNum()
+                        Listado.actuaizarPeliculas()
+                    End If
+                End If
+            End If
+        Next
     End Sub
     Private Sub btn_cancelar_Click(sender As Object, e As EventArgs) Handles btn_cancelar.Click
         limpiar()

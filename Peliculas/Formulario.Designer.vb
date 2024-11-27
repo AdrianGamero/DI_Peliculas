@@ -75,9 +75,9 @@ Partial Class Formulario
         lbl_nombre.ImageAlign = ContentAlignment.MiddleRight
         lbl_nombre.Location = New Point(29, 89)
         lbl_nombre.Name = "lbl_nombre"
-        lbl_nombre.Size = New Size(51, 15)
+        lbl_nombre.Size = New Size(37, 15)
         lbl_nombre.TabIndex = 6
-        lbl_nombre.Text = "Nombre"
+        lbl_nombre.Text = "Titulo"
         lbl_nombre.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' txtBx_titulo
@@ -271,7 +271,7 @@ Partial Class Formulario
         ' 
         ' CheckedListBox
         ' 
-        CheckedListBox.Font = New Font("Segoe UI", 10.0F)
+        CheckedListBox.Font = New Font("Segoe UI", 10F)
         CheckedListBox.FormattingEnabled = True
         CheckedListBox.Location = New Point(6, 22)
         CheckedListBox.Name = "CheckedListBox"
@@ -299,7 +299,7 @@ Partial Class Formulario
         ' 
         ' Formulario
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.GrayText
         ClientSize = New Size(877, 322)
